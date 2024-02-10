@@ -1,0 +1,37 @@
+﻿@model LogIn.Models.LogInModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "LogIn", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+
+        <div>
+        @Html.LabelFor(model => model.username)
+        @Html.TextBoxFor(model => model.username)
+        </div>
+
+        <div>
+        @Html.LabelFor(model => model.password)
+        @Html.PasswordFor(model => model.password)
+        </div>
+
+        <div>
+        @Html.LabelFor(model => model.type)
+        @Html.DropDownListFor(model => model.type, new SelectList(new[]
+        {
+            new { Value = "User", Text = "User" },
+            new { Value = "Admin", Text = "Admin" }
+        }, "Value", "Text"), "Select User Type")
+        </div>
+
+        <div>
+            <input type="submit" value="Login" />
+        </div>
+}
+
+
